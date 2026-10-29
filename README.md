@@ -20,7 +20,7 @@ Historical artifacts may retain the former Aztecscan operator name. They are pre
 - Commission: `2500` bps = 25%
 - Cadence: weekly
 - First off-chain payout started at v4 Aztec epoch `3943`.
-- Settlement windows are inclusive and non-overlapping within each rollup. The next run for the same rollup should start at the previous run's `toEpoch + 1`; epoch numbers can restart across upgrades.
+- Settlement windows are inclusive and non-overlapping within each rollup. Advance to the last **confirmed paid** `toEpoch + 1`, not merely a prepared/published run; epoch numbers can restart across upgrades. V6 activated at epoch `603` (first checkpoint at `606`). Publication of `603-717` does not authorize starting at `718` until that payout is confirmed mined.
 
 ## Runs
 
@@ -31,7 +31,7 @@ Recent audits:
 | Rollup | Window | Artifacts |
 |---|---|---|
 | v6 | epochs `603-717` | [`audit`](./runs/epoch-603-717-mvtdyuhg-247692.json), [`payout Safe import`](./runs/epoch-603-717-mvtdyuhg-247692.safe.json) |
-| v5 (final) | epochs `4237-4425` | [`audit`](./runs/epoch-4237-4425-mvrt4qy2-3f1729.json) |
+| v5 (final) | epochs `4237-4425` | [`audit`](./runs/epoch-4237-4425-mvrt4qy2-3f1729.json), [`payout Safe import`](./runs/epoch-4237-4425-mvrt4qy2-3f1729.safe.json) |
 
 Historical first payout:
 
@@ -44,8 +44,11 @@ Historical first payout:
 `claims/` contains reusable, rollup-specific Safe imports, separate from epoch payout runs:
 
 - [v6 sequencer reward claim](./claims/v6-0xe37a2663cc9c119ba41572c40fab0bbb23a5402f.safe.json)
+- [Historical v5 sequencer reward claim](./claims/v5-0x91ff8bbd8ebb07893010d50a48a1609e5ebd8e34.safe.json)
 
 The v6 claim calls `claimSequencerRewards(0x90e7b822a5Ac10edC381aBc03d94b866e4B985A1)` on the v6 rollup on Ethereum mainnet (chain ID `1`), with zero ETH value. It sweeps the Safe's available sequencer rewards, not a specific epoch window, and can be reused before a payout batch. It does not transfer delegator payouts. Verify the target, recipient, and available rewards before execution.
+
+This repo is the sole home for payout audits, payout Safe imports and reusable rollup claims. Preparation writes here directly; no claim/run copies belong in ops. Keep configs with RPC secrets, logs, diagnostics, proxy scripts, failed trials and overlapping validation runs private/local, not in this repository. Preserve previously published historical artifact bytes.
 
 ## Verification
 
