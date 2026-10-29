@@ -1,4 +1,4 @@
-# Public Aztecscan mainnet payout config.
+# Public Olla Finance mainnet payout config (historical v5 rollup).
 # Add your own archival Ethereum mainnet rpcUrl before re-running.
 
 multicallAddress: "0xcA11bde05977b3631167028862bE2a173976CA11"
