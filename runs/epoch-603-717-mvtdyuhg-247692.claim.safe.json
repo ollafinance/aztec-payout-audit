@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "chainId": "1",
+  "createdAt": 1793268721,
+  "meta": {
+    "name": "Aztecscan claim sequencer rewards",
+    "description": "Call rollup.claimSequencerRewards(0x90e7b822a5Ac10edC381aBc03d94b866e4B985A1) before importing/executing the payout transfer batch.",
+    "txBuilderVersion": "1.16.5",
+    "createdFromSafeAddress": "0x90e7b822a5Ac10edC381aBc03d94b866e4B985A1",
+    "createdFromOwnerAddress": ""
+  },
+  "transactions": [
+    {
+      "to": "0xE37A2663Cc9c119BA41572C40fAb0bbb23a5402f",
+      "value": "0",
+      "data": "0xc7523d7900000000000000000000000090e7b822a5ac10edc381abc03d94b866e4b985a1",
+      "contractMethod": null,
+      "contractInputsValues": null
+    }
+  ]
+}
